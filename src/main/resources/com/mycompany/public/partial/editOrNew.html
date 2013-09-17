@@ -3,17 +3,28 @@
         <form name="form" class="form-horizontal" novalidate>
             <fieldset>
                 <div class="control-group" ng-class="{true:'error', false:''}[form.name.$dirty && form.name.$invalid]">
-                    <label class="control-label">Beer name</label>
+                    <label class="control-label">Cidre name</label>
 
                     <div class="controls">
-                        <input type="text" id="name" name="name" ng-model="beer.name" required>
+                        <input type="text" id="name" name="name" ng-model="cidre.name" required>
+                        <span class="help-inline">Required</span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="control-group" ng-class="{true:'error', false:''}[form.price.$dirty && form.price.$invalid]">
+                    <label class="control-label">Cidre price</label>
+
+                    <div class="controls">
+                        <input type="text" id="price" name="price" ng-model="cidre.price" required>
                         <span class="help-inline">Required</span>
                     </div>
                 </div>
             </fieldset>
 
             <div class="form-actions">
-                <button id="submit" type="submit" class="btn btn-primary" ng-click="saveBeer(beer)">{{submitMessage}}</button>
+                <button id="submit" type="submit" class="btn btn-primary" ng-click="saveCidre(cidre)">{{submitMessage}}</button>
                 or
                 <a href="#/main" class="btn">Cancel</a>
             </div>

@@ -19,14 +19,14 @@ package com.mycompany.services;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
 import com.mongodb.MongoClient;
-import com.mycompany.model.Beer;
+import com.mycompany.model.Cidre;
 
 public class MongoService {
 
     private static Datastore datastore;
 
     public static void setMongoClient(MongoClient mongoClient, String dbName) {
-        datastore = new Morphia().map(Beer.class).createDatastore(mongoClient, dbName);
+        datastore = new Morphia().map(Cidre.class).createDatastore(mongoClient, dbName);
     }
 
     public static Datastore getDatastore() {

@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="span12">
+        <form name="form" class="form-horizontal" novalidate>
+            <span class="label label-important">{{ messageError }}</span>
+            <fieldset>
+                <div class="control-group" ng-class="{true:'error', false:''}[form.login.$dirty && form.login.$invalid]">
+                    <label class="control-label">Login</label>
+
+                    <div class="controls">
+                        <input type="text" id="login" name="login" ng-model="user.login" required>
+                        <span class="help-inline">Required</span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="control-group" ng-class="{true:'error', false:''}[form.password.$dirty && form.password.$invalid]">
+                    <label class="control-label">Password</label>
+
+                    <div class="controls">
+                        <input type="text" id="password" name="password" ng-model="user.password" required>
+                        <span class="help-inline">Required</span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-actions">
+                <button id="submit" type="submit" class="btn btn-primary" ng-click="submitUser(user)">Login</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+

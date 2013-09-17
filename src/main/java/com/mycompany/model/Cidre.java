@@ -4,13 +4,10 @@ package com.mycompany.model;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Transient;
-import com.google.gson.annotations.Expose;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 import org.bson.types.ObjectId;
 
-@Entity("beers")
-public class Beer {
+@Entity("cidres")
+public class Cidre {
 
     @Id
     private ObjectId internalId;
@@ -19,6 +16,8 @@ public class Beer {
     private String id;
 
     private String name;
+
+    private Double price;
 
     public String getId() {
         return id;
@@ -36,13 +35,21 @@ public class Beer {
         this.name = name;
     }
 
-    public Beer prepareForJson() {
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Cidre prepareForJson() {
         setId(internalId.toString());
         internalId = null;
         return this;
     }
 
-    public Beer prepareForDb() {
+    public Cidre prepareForDb() {
         if (id != null) {
             internalId = new ObjectId(id);
         }

@@ -2,8 +2,10 @@ package com.mycompany;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mycompany.services.BeerRessource;
+import com.mycompany.services.CidreRessource;
+import com.mycompany.services.JsonpRoute;
 import com.mycompany.services.MongoService;
+import com.mycompany.services.UserService;
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.MongodProcess;
 import de.flapdoodle.embed.mongo.MongodStarter;
@@ -38,7 +40,17 @@ public class Main {
         setPublicResourcesPath("/com/mycompany/public");
 
         // Add resource for beers on "/beer"
-        resource(new BeerRessource("/beer"));
+        CidreRessource restResource = new CidreRessource("/cidre");
+        resource(restResource);
+
+        jsonp("CALLBACK", new JsonpRoute("/jsonp/cidres", restResource));
+
+        UserService userService = new UserService(
+                System.getProperty("login", "admin"),
+                System.getProperty("password", "admin"));
+
+        addFilter(userService.getSecurityFilter());
+        post(userService.getLoginRoute());
 
         // Start the server.
         start(waitStop);
